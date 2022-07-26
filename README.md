@@ -11,31 +11,35 @@
   <h3 align="center">Proof Of Humanity StarkNet bridge L1 smart contracts.</h3>
 </div>
 
-## Usage
-
 > ## ⚠️ WARNING! ⚠️
+>
 > This repo contains highly experimental code.
 > Expect rapid iteration.
 > **Use at your own risk.**
 
-### Set up the project
+## 🏄‍♂️ Usage
 
-#### 📦 Install the requirements
+### Flow
+
+![Flow](resources/img/PoH-bridge-register-on-L2.png)
+
+## Set up the project
+
+### 📦 Install the requirements
 
 - [foundry](https://book.getfoundry.sh/)
 
-### ⛏️ Compile
+## ⛏️ Compile
 
 ```bash
 forge build
 ```
 
-### 🌡️ Test
+## 🌡️ Test
 
 ```bash
 forge test
 ```
-
 
 ## 📄 License
 
