@@ -39,4 +39,4 @@ forge test
 
 ## 📄 License
 
-**poh-starknet-bridge** is released under the [MIT](LICENSE).
+**poh-starknet-bridge-l1** is released under the [MIT](LICENSE).
