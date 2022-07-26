@@ -26,6 +26,9 @@ contract ProofOfHumanityStarkNetBridge is Context, Ownable {
      *  @param submissionID The ID of the submission.
      */
     error NotRegistered(address submissionID);
+    /** @dev Thrown when the L2 parameters are not set.
+     */
+    error L2ParametersNotSet();
 
     /// STORAGE
 
@@ -37,6 +40,14 @@ contract ProofOfHumanityStarkNetBridge is Context, Ownable {
     uint256 private _l2ProofOfHumanityRegistryContract;
     // Selector of register function
     uint256 private _registerSelector;
+
+    /// MODIFIERS
+    modifier onlyIfL2ParametersSet() {
+        if (_l2ProofOfHumanityRegistryContract == 0 || _registerSelector == 0) {
+            revert L2ParametersNotSet();
+        }
+        _;
+    }
 
     /** @dev Constructor.
      *  @param pohProxy_ The address of the ProofOfHumanity proxy contract.
@@ -66,7 +77,10 @@ contract ProofOfHumanityStarkNetBridge is Context, Ownable {
     /** @dev Register the submission on L2 if it is registered on L1.
      *  @param l2RecipientAddress The L2 address to associate the registration with.
      */
-    function registerToL2(uint256 l2RecipientAddress) public {
+    function registerToL2(uint256 l2RecipientAddress)
+        public
+        onlyIfL2ParametersSet
+    {
         // Get sender address
         address sender = _msgSender();
         // Check if address is registered
